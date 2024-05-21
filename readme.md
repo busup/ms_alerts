@@ -40,7 +40,9 @@ Para que una alerta se cree se tiene que dar una serie de eventos. Para ello lo 
 
 ```php
 use Core\Alerts\Application\Process\ProcessJob;
+use Core\Alerts\Application\Get\GetAllAlertsByService;
 
+$service_id = 5360070;
 
 $event = [
   "action" => "skipped_stops_with_bookings",
@@ -49,7 +51,7 @@ $event = [
     "stop_name" => "R. João Robalo, 470 - Jardim São Bento Novo, São Paulo - SP, 05881-000, Brasil",
     "stop_position" => 3
   ],
-  "service_id" => 5360070
+  "service_id" => $service_id
 ]
 
 // Using the dependency injection 
@@ -57,11 +59,16 @@ $event = [
 $processor = app()->make(ProcessJob::class);
 
 if ($processor->__invoke($event)) {
-    echo "The event was processed";
+    echo "The event was processed and an alert was created or modified.";
 } else {
-    echo "There was an error"
+    echo "No alert was created."
 }
 
+
+// Get all alerts from the service
+$getAllAlertsByService = app()->make(GetAllAlertsByService::class);
+
+$alerts = $getAllAlertsByService->__invoke($service_id);
 
 ```
 
