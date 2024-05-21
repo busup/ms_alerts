@@ -32,6 +32,29 @@ Asegúrate de tener Docker y Docker Compose instalados. Luego, ejecuta:
 docker-compose up -d
 ```
 
+## Ejemplos de uso
+
+### Procesar un evento
+
+Para que una alerta se cree se tiene que dar una serie de eventos. Para ello lo que se hace es pasar a todo evento que llega por un caso de uso que se llama ProcessJob, que será el encargado de analizar el evento que ha llegado junto con los datos asociados a ese evento para  crear o actualizar alertas dentro del sistema.
+
+```php
+use Core\Alerts\Application\Process\ProcessJob;
+
+
+$event = [
+  "action" => "skipped_stops_with_bookings",
+  "more_info" => [
+    "stop_id" => 570576,
+    "stop_name" => "R. João Robalo, 470 - Jardim São Bento Novo, São Paulo - SP, 05881-000, Brasil",
+    "stop_position" => 3
+  ],
+  "service_id" => 5360070
+]
+
+
+```
+
 ### Licencia
 Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo LICENSE para obtener más información.
 
