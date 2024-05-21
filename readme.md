@@ -52,8 +52,21 @@ $event = [
   "service_id" => 5360070
 ]
 
+// Using the dependency injection 
+
+$processor = app()->make(ProcessJob::class);
+
+if ($processor->__invoke($event)) {
+    echo "The event was processed";
+} else {
+    echo "There was an error"
+}
+
 
 ```
+
+
+
 
 ### Licencia
 Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo LICENSE para obtener más información.
