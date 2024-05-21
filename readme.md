@@ -32,6 +32,9 @@ Asegúrate de tener Docker y Docker Compose instalados. Luego, ejecuta:
 docker-compose up -d
 ```
 
+### Licencia
+Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo LICENSE para obtener más información.
+
 ### Clonar el repositorio
 
 ```sh
